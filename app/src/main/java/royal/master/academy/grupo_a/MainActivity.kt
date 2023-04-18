@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         * de nuestro Objeto [TextView](de la vista) por medio del objeto [binding]
         * el cual contiene todas las referencias de nuestra vista (xml)
         * */
-        binding.txtTitle.text = name
+        //binding.txtTitle.text = name
 
     }
 
