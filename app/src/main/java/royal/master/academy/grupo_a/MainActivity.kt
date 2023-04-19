@@ -2,13 +2,14 @@ package royal.master.academy.grupo_a
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import royal.master.academy.grupo_a.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     /* */
     private lateinit var binding : ActivityMainBinding
-
 
     /** Un Activy es una vista de tu Aplicacion*/
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,21 +20,29 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        /*Empezar nuestro codigo*/
-        setName("Hola a todos!")
+        setUpView()
+        setUpListeners()
 
     }
 
     /** */
-    private fun setName(name : String){
+    private fun setUpView() {
 
-        /*Decimos a la vista que queremos poner en el atributo [texto]
-        * de nuestro Objeto [TextView](de la vista) por medio del objeto [binding]
-        * el cual contiene todas las referencias de nuestra vista (xml)
-        * */
-        //binding.txtTitle.text = name
+        Toast.makeText(this,"La vista ha sido cargada",Toast.LENGTH_LONG).show()
 
     }
 
+    /** */
+    private fun setUpListeners() {
 
+        /* */
+        binding.btnActivityMainShow.setOnClickListener {
+
+            val name : String = binding.etActivityMainTitle.text.toString()
+            Toast.makeText(this,"El nombre es : $name",Toast.LENGTH_SHORT).show()
+            binding.tvActivityMainText.text = name
+
+        }
+
+    }
 }
