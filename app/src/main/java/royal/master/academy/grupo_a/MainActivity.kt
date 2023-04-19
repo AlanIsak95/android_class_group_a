@@ -3,6 +3,7 @@ package royal.master.academy.grupo_a
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import royal.master.academy.grupo_a.databinding.ActivityMainBinding
 
@@ -38,11 +39,28 @@ class MainActivity : AppCompatActivity() {
         /* */
         binding.btnActivityMainShow.setOnClickListener {
 
-            val name : String = binding.etActivityMainTitle.text.toString()
-            Toast.makeText(this,"El nombre es : $name",Toast.LENGTH_SHORT).show()
-            binding.tvActivityMainText.text = name
+
+            with(binding){
+
+                val name = etActivityMainTitle.text.toString()
+
+                if (name.trim().isEmpty())
+                    Toast.makeText(this@MainActivity,"Necesito tu nombre",Toast.LENGTH_SHORT).show()
+
+                tvActivityMainText.text = name
+
+                if (name == "Alan"){
+                    tvActivityMainTextHidden.visibility = View.VISIBLE
+                    tvActivityMainTextHidden.text = "HOLA! $name"
+                }else{
+                    tvActivityMainTextHidden.visibility = View.INVISIBLE
+                    tvActivityMainTextHidden.text = ""
+                }
+
+            }
 
         }
 
     }
+
 }

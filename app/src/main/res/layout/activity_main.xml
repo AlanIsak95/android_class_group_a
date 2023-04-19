@@ -43,5 +43,18 @@
         app:layout_constraintStart_toStartOf="@+id/btn_activity_main_show"
         app:layout_constraintTop_toBottomOf="@+id/btn_activity_main_show" />
 
+    <TextView
+        android:id="@+id/tv_activity_main_text_hidden"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        tools:text="Mensaje Secreto"
+        tools:visibility="visible"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
