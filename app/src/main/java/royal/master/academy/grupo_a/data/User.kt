@@ -10,7 +10,7 @@ data class User(
 
     /* */
     fun validateCredentials() : UserLoginStatus =
-        if (userName == "aaltamira" && password == "123456789A")
+        if (userName == "aalta1" && password == "123456789A")
             UserLoginStatus.SUCCESS
         else
             UserLoginStatus.FAILURE

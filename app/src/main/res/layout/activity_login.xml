@@ -15,36 +15,66 @@
         tools:context=".login.LoginActivity">
 
 
-        <EditText
-            android:id="@+id/et_activity_login_user"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_activity_login_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            android:inputType="text"
             android:hint="Usuario"
-            android:gravity="center"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            app:boxStrokeColor="@color/til_color_default_selector"
+            app:helperText="numero de empleado"
+            app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
+            android:textColorHint="#673AB7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:importantForAutofill="no" />
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="120dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="6"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="6"
+                android:textColor="#3F51B5"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-        <EditText
-            android:id="@+id/et_activity_login_password"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_activity_login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="42dp"
-            android:ems="10"
-            android:gravity="center"
+            app:boxStrokeColor="@color/til_color_default_selector"
+            app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
+            android:textColorHint="#673AB7"
             android:hint="Contraseña"
+            android:layout_marginTop="42dp"
             android:inputType="textPassword"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
+            app:passwordToggleEnabled="true"
+            app:counterEnabled="true"
+            app:helperText="Minimo 10 caracteres"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_activity_login_user" />
+            app:layout_constraintTop_toBottomOf="@+id/til_activity_login_user"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#3F51B5"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <TextView
             android:id="@+id/tv_activity_login_error"
@@ -60,7 +90,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_activity_login_password"
+            app:layout_constraintTop_toBottomOf="@+id/til_activity_login_password"
             tools:text="Usuario o contraseña erroneas" />
 
         <Button

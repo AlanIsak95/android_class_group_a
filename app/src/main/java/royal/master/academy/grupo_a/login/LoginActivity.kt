@@ -38,7 +38,6 @@ class LoginActivity : AppCompatActivity() {
             tvActivityLoginError.visibility = View.GONE
         }
 
-
     }
 
 
@@ -51,10 +50,10 @@ class LoginActivity : AppCompatActivity() {
         }
 
         /* */
-        binding.etActivityLoginUser.doOnTextChanged { text, _, _, _ ->
+        binding.tilActivityLoginUser.editText?.doOnTextChanged { text, _, _, _ ->
 
             val valorDelEditText = text.toString().trim()
-            val passwordValue = binding.etActivityLoginPassword.text.toString().trim()
+            val passwordValue = binding.tilActivityLoginPassword.editText?.text.toString().trim()
 
             binding.btnActivityLoginLogin.isEnabled =
                 valorDelEditText.isNotEmpty() &&  valorDelEditText.length >= 6 && passwordValue.isNotEmpty() && passwordValue.length >= 10
@@ -62,10 +61,10 @@ class LoginActivity : AppCompatActivity() {
         }
 
         /* */
-        binding.etActivityLoginPassword.doOnTextChanged{ text, _, _, _ ->
+        binding.tilActivityLoginPassword.editText?.doOnTextChanged{ text, _, _, _ ->
 
             val valorDelEditText = text.toString().trim()
-            val userValue = binding.etActivityLoginUser.text.toString().trim()
+            val userValue = binding.tilActivityLoginUser.editText?.text.toString().trim()
 
             binding.btnActivityLoginLogin.isEnabled =
                 valorDelEditText.isNotEmpty() && valorDelEditText.length >= 10 && userValue.isNotEmpty() &&  userValue.length >= 6
@@ -73,13 +72,17 @@ class LoginActivity : AppCompatActivity() {
         }
 
         /* */
-        binding.etActivityLoginUser.setOnFocusChangeListener { _ , _ ->
+        binding.tilActivityLoginUser.editText?.setOnFocusChangeListener { _ , _ ->
             binding.tvActivityLoginError.visibility = View.GONE
+            binding.tilActivityLoginUser.error = null
+            binding.tilActivityLoginPassword.error = null
         }
 
         /* */
-        binding.etActivityLoginPassword.setOnFocusChangeListener { _ , _ ->
+        binding.tilActivityLoginPassword.editText?.setOnFocusChangeListener { _ , _ ->
             binding.tvActivityLoginError.visibility = View.GONE
+            binding.tilActivityLoginUser.error = null
+            binding.tilActivityLoginPassword.error = null
         }
 
 
@@ -91,8 +94,8 @@ class LoginActivity : AppCompatActivity() {
 
         with(binding){
 
-            val userText = etActivityLoginUser.text.toString()
-            val passwordText = etActivityLoginPassword.text.toString()
+            val userText = tilActivityLoginUser.editText?.text.toString()
+            val passwordText = tilActivityLoginPassword.editText?.text.toString()
 
             val user = User(
                 name = "Alan Altamira",
@@ -116,13 +119,6 @@ class LoginActivity : AppCompatActivity() {
 
         binding.tvActivityLoginError.visibility = View.GONE
 
-        /*
-        val welcomeScreen = Intent(this@LoginActivity , WelcomeActivity::class.java)
-        val name = "Alan Altamira"
-        welcomeScreen.putExtra("nameByLogin", name )
-        welcomeScreen.putExtra("age", 15 )
-        startActivity(welcomeScreen) */
-
         Intent(this@LoginActivity,WelcomeActivity::class.java).apply{
             putExtra("nameByLogin", "Alan Altamira" )
             putExtra("age", 15 )
@@ -136,13 +132,16 @@ class LoginActivity : AppCompatActivity() {
 
         with(binding){
 
-            etActivityLoginUser.setText("")
-            etActivityLoginPassword.setText("")
+            tilActivityLoginUser.editText?.setText("")
+            tilActivityLoginPassword.editText?.setText("")
 
-            etActivityLoginUser.clearFocus()
-            etActivityLoginPassword.clearFocus()
+            tilActivityLoginUser.clearFocus()
+            tilActivityLoginPassword.clearFocus()
 
             tvActivityLoginError.visibility = View.VISIBLE
+
+            tilActivityLoginUser.error = "Introduce tu usuario"
+            tilActivityLoginPassword.error = "Introduce tu contraseña"
 
         }
 
