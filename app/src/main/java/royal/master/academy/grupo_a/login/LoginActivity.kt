@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.core.widget.doOnTextChanged
+import royal.master.academy.grupo_a.data.Data
 import royal.master.academy.grupo_a.data.User
 import royal.master.academy.grupo_a.data.UserLoginStatus
 import royal.master.academy.grupo_a.databinding.ActivityLoginBinding
+import royal.master.academy.grupo_a.register.RegisterActivity
+import royal.master.academy.grupo_a.utils.Tools.createToast
 
 class LoginActivity : AppCompatActivity() {
 
@@ -35,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
             btnActivityLoginLogin.isEnabled = false
             tvActivityLoginError.text = "El usuario o contraseña estan mal."
             btnActivityLoginLogin.text = "Login"
+            tvActivityLoginRegister.text = "REGISTRO"
             tvActivityLoginError.visibility = View.GONE
         }
 
@@ -43,6 +47,19 @@ class LoginActivity : AppCompatActivity() {
 
     /** */
     private fun setUpListeners() {
+
+        /* */
+        binding.tvActivityLoginList.setOnClickListener {
+
+            val listCount = Data.getUserList().count().toString()
+            createToast(this,listCount)
+
+        }
+
+        /* */
+        binding.tvActivityLoginRegister.setOnClickListener {
+            goToRegisterView()
+        }
 
         /* */
         binding.btnActivityLoginLogin.setOnClickListener {
@@ -125,6 +142,13 @@ class LoginActivity : AppCompatActivity() {
         }.also { startActivity(it) }
 
         finish()
+    }
+
+    /** */
+    private fun goToRegisterView() {
+
+        Intent(this@LoginActivity,RegisterActivity::class.java).also { startActivity(it) }
+
     }
 
     /** */

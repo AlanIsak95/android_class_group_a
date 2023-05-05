@@ -14,6 +14,9 @@
         android:theme="@style/Theme.GrupoA"
         tools:targetApi="33">
         <activity
+            android:name=".register.RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.WelcomeActivity"
             android:exported="false" />
         <activity
