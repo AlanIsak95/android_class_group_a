@@ -2,7 +2,9 @@ package royal.master.academy.grupo_a.utils
 
 import android.content.Context
 import android.widget.Toast
+import royal.master.academy.grupo_a.data.Data
 import royal.master.academy.grupo_a.data.User
+import royal.master.academy.grupo_a.login.status.LoginEnum
 
 object Tools {
 
@@ -17,7 +19,10 @@ object Tools {
         password : String,
     ):User{
 
-        val userName = "01$phoneNumber"
+        val userNameSuf = name.substring(0,2).lowercase()
+        val phoneSuf = phoneNumber.substring(0,2)
+
+        val userName = "us$userNameSuf$phoneSuf"
 
         return User(
             user_id = 0,
@@ -27,6 +32,32 @@ object Tools {
             password = password,
             userName = userName
         )
+
+    }
+
+
+    fun loginWithCredentials(
+        userName : String,
+        password : String,
+        callBack : (LoginEnum,User) -> Unit
+    ){
+
+        var loginEnum   = LoginEnum.FAILURE
+        var userLogged  = User()
+
+        val userList = Data.getUserList()
+
+        userList.forEach {userItem ->
+
+            if (userItem.userName == userName && userItem.password == password){
+                loginEnum = LoginEnum.SUCCESS
+                userLogged = userItem
+                return@forEach
+            }
+
+        }
+
+        callBack(loginEnum,userLogged)
 
     }
 

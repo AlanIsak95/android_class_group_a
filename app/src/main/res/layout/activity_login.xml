@@ -59,7 +59,7 @@
             android:layout_marginEnd="24dp"
             app:passwordToggleEnabled="true"
             app:counterEnabled="true"
-            app:helperText="Minimo 10 caracteres"
+            app:helperText="Minimo 4 caracteres"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/til_activity_login_user"

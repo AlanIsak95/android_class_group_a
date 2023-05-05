@@ -2,11 +2,14 @@ package royal.master.academy.grupo_a.register
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
+import android.os.Handler
+import android.os.Looper
+import android.view.View
 import com.google.android.material.textfield.TextInputLayout
 import royal.master.academy.grupo_a.data.Data
 import royal.master.academy.grupo_a.databinding.ActivityRegisterBinding
 import royal.master.academy.grupo_a.utils.Tools
+import royal.master.academy.grupo_a.utils.Tools.createToast
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -40,6 +43,9 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.btnActivityRegisterRegister.setOnClickListener {
 
+            binding.clActivityRegisterContainer.visibility = View.VISIBLE
+            binding.btnActivityRegisterRegister.isEnabled = false
+
             val name     = binding.tilActivityRegisterName.getText()
             val email    = binding.tilActivityRegisterEmail.getText()
             val phone    = binding.tilActivityRegisterPhoneNumber.getText()
@@ -52,8 +58,22 @@ class RegisterActivity : AppCompatActivity() {
                 password = password
             )
 
-            Data.addUser(userToSaveInCache)
-            finish()
+            Handler(Looper.getMainLooper()).postDelayed({
+
+                val userName = userToSaveInCache.userName
+
+                createToast(this,"Registro Exitoso, tu usuario es : $userName")
+
+            },1_000)
+
+
+            Handler(Looper.getMainLooper()).postDelayed({
+
+                Data.addUser(userToSaveInCache)
+                finish()
+
+            },2_000)
+
 
         }
 
@@ -66,18 +86,6 @@ class RegisterActivity : AppCompatActivity() {
         binding.btnActivityRegisterRegister.text = "Registrar Usuario"
 
     }
-
-
-    /*
-    data class User(
-    val name : String,
-    val email : String = "invitado@royal.com",
-    val phoneNumber : String = "11111111",
-    val password : String,
-    val userName : String
-)
-     */
-
 
 
 

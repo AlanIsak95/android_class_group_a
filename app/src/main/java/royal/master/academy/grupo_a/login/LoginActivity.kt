@@ -6,10 +6,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.widget.doOnTextChanged
 import royal.master.academy.grupo_a.data.Data
-import royal.master.academy.grupo_a.data.User
-import royal.master.academy.grupo_a.data.UserLoginStatus
+import royal.master.academy.grupo_a.data.UserLogged
 import royal.master.academy.grupo_a.databinding.ActivityLoginBinding
+import royal.master.academy.grupo_a.login.status.LoginEnum
 import royal.master.academy.grupo_a.register.RegisterActivity
+import royal.master.academy.grupo_a.utils.Tools
 import royal.master.academy.grupo_a.utils.Tools.createToast
 
 class LoginActivity : AppCompatActivity() {
@@ -34,6 +35,8 @@ class LoginActivity : AppCompatActivity() {
     /** */
     private fun setUpView() {
 
+        Data.clearLoginUserList()
+
         with(binding){
             btnActivityLoginLogin.isEnabled = false
             tvActivityLoginError.text = "El usuario o contraseña estan mal."
@@ -49,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
     private fun setUpListeners() {
 
         /* */
-        binding.tvActivityLoginList.setOnClickListener {
+        binding.tvActivityLoginList.setOnClickListener{
 
             val listCount = Data.getUserList().count().toString()
             createToast(this,listCount)
@@ -73,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
             val passwordValue = binding.tilActivityLoginPassword.editText?.text.toString().trim()
 
             binding.btnActivityLoginLogin.isEnabled =
-                valorDelEditText.isNotEmpty() &&  valorDelEditText.length >= 6 && passwordValue.isNotEmpty() && passwordValue.length >= 10
+                valorDelEditText.isNotEmpty() &&  valorDelEditText.length >= 6 && passwordValue.isNotEmpty() && passwordValue.length >= 4
 
         }
 
@@ -84,7 +87,7 @@ class LoginActivity : AppCompatActivity() {
             val userValue = binding.tilActivityLoginUser.editText?.text.toString().trim()
 
             binding.btnActivityLoginLogin.isEnabled =
-                valorDelEditText.isNotEmpty() && valorDelEditText.length >= 10 && userValue.isNotEmpty() &&  userValue.length >= 6
+                valorDelEditText.isNotEmpty() && valorDelEditText.length >= 4 && userValue.isNotEmpty() &&  userValue.length >= 6
 
         }
 
@@ -114,18 +117,22 @@ class LoginActivity : AppCompatActivity() {
             val userText = tilActivityLoginUser.editText?.text.toString()
             val passwordText = tilActivityLoginPassword.editText?.text.toString()
 
-            val user = User(
-                name = "Alan Altamira",
-                password = passwordText,
-                userName = userText
-            )
 
-            when(user.validateCredentials()){
-                UserLoginStatus.SUCCESS -> goToWelcomeView()
-                UserLoginStatus.FAILURE -> showLoginTvError()
+            Tools.loginWithCredentials(
+                userName = userText,
+                password = passwordText
+            ){ loginEnum , userLogged ->
+
+                when(loginEnum){
+                    LoginEnum.SUCCESS -> {
+                        UserLogged.setUserLogged(userLogged)
+                        goToWelcomeView()
+                    }
+                    LoginEnum.FAILURE -> showLoginTvError()
+
+                }
+
             }
-
-            /*TODO hideKeyBoard()*/
 
         }
 
@@ -136,10 +143,8 @@ class LoginActivity : AppCompatActivity() {
 
         binding.tvActivityLoginError.visibility = View.GONE
 
-        Intent(this@LoginActivity,WelcomeActivity::class.java).apply{
-            putExtra("nameByLogin", "Alan Altamira" )
-            putExtra("age", 15 )
-        }.also { startActivity(it) }
+        Intent(this@LoginActivity,WelcomeActivity::class.java)
+            .also{startActivity(it)}
 
         finish()
     }

@@ -2,6 +2,7 @@ package royal.master.academy.grupo_a.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import royal.master.academy.grupo_a.data.UserLogged
 import royal.master.academy.grupo_a.databinding.ActivityWelcomeBinding
 
 class WelcomeActivity : AppCompatActivity() {
@@ -16,16 +17,14 @@ class WelcomeActivity : AppCompatActivity() {
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
         setUpView()
 
     }
 
     private fun setUpView() {
 
-        val nameByLogin = intent.getStringExtra("nameByLogin")
-        val ageByLogin = intent.getIntExtra("age",50)
-        binding.tvActivityWelcomeTitle.text = "Bienvenido $nameByLogin tu edad es $ageByLogin"
+        val user = UserLogged.getUserLogged()
+        binding.tvActivityWelcomeTitle.text = "Bienvenido ${user.name} tu telefono es ${user.phoneNumber}"
 
     }
 

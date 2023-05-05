@@ -13,4 +13,9 @@ object Data {
     /* */
     fun getUserList() = userList
 
+    /* */
+    fun clearLoginUserList() {
+        userList = mutableListOf()
+    }
+
 }
