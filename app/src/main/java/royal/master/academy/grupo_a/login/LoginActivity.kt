@@ -15,6 +15,8 @@ import royal.master.academy.grupo_a.utils.Tools.createToast
 
 class LoginActivity : AppCompatActivity() {
 
+    /* Aprendiendo GIT basico*/
+
     /* */
     private lateinit var binding : ActivityLoginBinding
 
