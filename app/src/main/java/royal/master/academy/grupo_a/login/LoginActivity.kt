@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.core.widget.doOnTextChanged
+import royal.master.academy.grupo_a.R
 import royal.master.academy.grupo_a.data.Data
 import royal.master.academy.grupo_a.data.UserLogged
 import royal.master.academy.grupo_a.databinding.ActivityLoginBinding
@@ -41,9 +42,11 @@ class LoginActivity : AppCompatActivity() {
 
         with(binding){
             btnActivityLoginLogin.isEnabled = false
-            tvActivityLoginError.text = "El usuario o contraseña estan mal."
-            btnActivityLoginLogin.text = "Login"
-            tvActivityLoginRegister.text = "REGISTRO"
+
+            tvActivityLoginError.text    = getString(R.string.activity_login_tv_error_text)
+            tvActivityLoginRegister.text = getString(R.string.activity_login_btn_register_text)
+            btnActivityLoginLogin.text   = getString(R.string.activity_login_btn_login_text)
+
             tvActivityLoginError.visibility = View.GONE
         }
 
