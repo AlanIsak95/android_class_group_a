@@ -13,6 +13,7 @@ import royal.master.academy.grupo_a.login.status.LoginEnum
 import royal.master.academy.grupo_a.register.RegisterActivity
 import royal.master.academy.grupo_a.utils.Tools
 import royal.master.academy.grupo_a.utils.Tools.createToast
+import royal.master.academy.grupo_a.utils.extension_fun.setBooleanSharedPreferences
 
 class LoginActivity : AppCompatActivity() {
 
@@ -130,6 +131,14 @@ class LoginActivity : AppCompatActivity() {
 
                 when(loginEnum){
                     LoginEnum.SUCCESS -> {
+
+                        setBooleanSharedPreferences(
+                            sharedPreferenceId = "login",
+                            loginSession = true
+                        )
+
+                        /*TODO guardar datos nombre y telefono en SP.*/
+
                         UserLogged.setUserLogged(userLogged)
                         goToWelcomeView()
                     }

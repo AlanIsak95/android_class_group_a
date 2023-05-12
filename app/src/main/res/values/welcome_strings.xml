@@ -1,0 +1,3 @@
+<resources>
+    <string name="welcome_activity_title">Bienvenido %s tu telefono es %s</string>
+</resources>
