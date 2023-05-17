@@ -137,7 +137,6 @@ class LoginActivity : AppCompatActivity() {
                             loginSession = true
                         )
 
-                        /*TODO guardar datos nombre y telefono en SP.*/
 
                         UserLogged.setUserLogged(userLogged)
                         goToWelcomeView()

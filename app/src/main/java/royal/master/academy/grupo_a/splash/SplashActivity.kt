@@ -26,6 +26,23 @@ class SplashActivity : AppCompatActivity() {
         setContentView(view)
 
         redirection()
+        setUpListeners()
+
+    }
+   /** */
+    private fun setUpListeners() {
+
+       /* */
+       binding.animationView.setOnClickListener{
+
+           with(binding.animationView){
+
+               if (isAnimating.not())
+                   playAnimation()
+
+           }
+
+       }
 
     }
 
@@ -44,7 +61,7 @@ class SplashActivity : AppCompatActivity() {
 
             finish()
 
-        },2_000)
+        },4_000)
 
 
     }

@@ -9,6 +9,8 @@ import royal.master.academy.grupo_a.utils.extension_fun.setBooleanSharedPreferen
 
 class WelcomeActivity : AppCompatActivity() {
 
+    // TODO: Agregar Lottie
+
     /* */
     private lateinit var binding : ActivityWelcomeBinding
 
@@ -33,11 +35,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     private fun setUpView() {
 
-       // val user = UserLogged.getUserLogged()
-       // val titleText = getString(R.string.welcome_activity_title,user.name,user.phoneNumber)
         binding.tvActivityWelcomeTitle.text = "Alan"
-        /*TODO*/
-        //Obtener los datos de share Preferences y mostrarlos en el TextView
 
 
     }
