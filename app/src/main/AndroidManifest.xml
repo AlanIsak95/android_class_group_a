@@ -14,14 +14,16 @@
         android:theme="@style/Theme.GrupoA"
         tools:targetApi="33">
         <activity
+            android:name=".login.LoginNCActivity"
+            android:exported="false" />
+        <activity
             android:name=".splash.SplashActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".register.RegisterActivity"
@@ -31,8 +33,7 @@
             android:exported="false" />
         <activity
             android:name=".login.LoginActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="false" />

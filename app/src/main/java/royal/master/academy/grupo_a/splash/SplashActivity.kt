@@ -8,7 +8,9 @@ import android.os.Handler
 import android.os.Looper
 import royal.master.academy.grupo_a.databinding.ActivitySplashBinding
 import royal.master.academy.grupo_a.login.LoginActivity
+import royal.master.academy.grupo_a.login.LoginNCActivity
 import royal.master.academy.grupo_a.login.WelcomeActivity
+import royal.master.academy.grupo_a.login.ui.LoginFragment
 import royal.master.academy.grupo_a.utils.extension_fun.getBooleanSharedPreferences
 
 @SuppressLint("CustomSplashScreen")
@@ -57,7 +59,7 @@ class SplashActivity : AppCompatActivity() {
            if (userLogged)
                Intent(this,WelcomeActivity::class.java).also { startActivity(it) }
            else
-               Intent(this,LoginActivity::class.java).also { startActivity(it) }
+               Intent(this,LoginNCActivity::class.java).also { startActivity(it) }
 
             finish()
 

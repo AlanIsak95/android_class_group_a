@@ -17,8 +17,6 @@ import royal.master.academy.grupo_a.utils.extension_fun.setBooleanSharedPreferen
 
 class LoginActivity : AppCompatActivity() {
 
-    /* Aprendiendo GIT basico*/
-
     /* */
     private lateinit var binding : ActivityLoginBinding
 
