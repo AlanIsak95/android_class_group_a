@@ -33,6 +33,19 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         showToast(registerViewModel.name)
+        setUpLiveDataListeners()
+
+    }
+
+    /** */
+    private fun setUpLiveDataListeners() {
+
+        registerViewModel.appVersion.observe(viewLifecycleOwner){textUpdated ->
+
+            /* Se ejecuta esta parte del codigo cuando se obtiene algun cambio de la variable*/
+            binding.tvFragmentRegisterVersion.text = textUpdated
+
+        }
 
     }
 

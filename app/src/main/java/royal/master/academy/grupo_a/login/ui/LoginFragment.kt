@@ -42,6 +42,19 @@ class LoginFragment : Fragment() {
 
         setUpView()
         setUpListeners()
+        setUpLiveDataListeners()
+
+    }
+
+    /** */
+    private fun setUpLiveDataListeners() {
+
+            loginViewModel.appVersion.observe(viewLifecycleOwner){textUpdated ->
+
+                /* Se ejecuta esta parte del codigo cuando se obtiene algun cambio de la variable*/
+                binding.tvFragmentLoginVersion.text = textUpdated
+
+            }
 
     }
 
@@ -70,13 +83,17 @@ class LoginFragment : Fragment() {
         /* */
         binding.tvFragmentLoginList.setOnClickListener{
 
-            val name = binding.tilFragmentLoginUser.editText?.text.toString()
+            //val name = binding.tilFragmentLoginUser.editText?.text.toString()
+            //loginViewModel.name = name
+            //showToast(loginViewModel.name)
 
-            loginViewModel.name = name
-            showToast(loginViewModel.name)
 
             //val listCount = Data.getUserList().count().toString()
             //Tools.createToast(requireContext(), listCount)
+
+
+            val version = binding.tilFragmentLoginUser.editText?.text.toString()
+            loginViewModel.appVersion.value = version
 
         }
 
