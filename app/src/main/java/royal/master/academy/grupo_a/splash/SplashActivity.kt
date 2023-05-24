@@ -7,10 +7,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import royal.master.academy.grupo_a.databinding.ActivitySplashBinding
-import royal.master.academy.grupo_a.login.LoginActivity
 import royal.master.academy.grupo_a.login.LoginNCActivity
 import royal.master.academy.grupo_a.login.WelcomeActivity
-import royal.master.academy.grupo_a.login.ui.LoginFragment
 import royal.master.academy.grupo_a.utils.extension_fun.getBooleanSharedPreferences
 
 @SuppressLint("CustomSplashScreen")
@@ -63,7 +61,7 @@ class SplashActivity : AppCompatActivity() {
 
             finish()
 
-        },4_000)
+        },1_000)
 
 
     }

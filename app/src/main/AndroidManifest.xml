@@ -32,9 +32,6 @@
             android:name=".login.WelcomeActivity"
             android:exported="false" />
         <activity
-            android:name=".login.LoginActivity"
-            android:exported="false"></activity>
-        <activity
             android:name=".MainActivity"
             android:exported="false" />
     </application>
