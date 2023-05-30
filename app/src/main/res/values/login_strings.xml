@@ -2,10 +2,13 @@
 
     <string name="activity_login_til_user_text">Usuario</string>
     <string name="activity_login_til_user_helper_text">numero de empleado</string>
+    <string name="activity_login_til_user_version_helper_text">Coloca la version del App</string>
     <string name="activity_login_til_password_text">Contraseña</string>
     <string name="activity_login_til_password_helper_text">Minimo 4 caracteres</string>
     <string name="activity_login_tv_error_text">El usuario o contraseña estan mal.</string>
     <string name="activity_login_btn_register_text">Registro</string>
     <string name="activity_login_btn_login_text">Login</string>
+    <string name="activity_login_tv_login_version_text">Version %s</string>
+    <string name="activity_login_til_login_version_text">Numero de version</string>
 
 </resources>

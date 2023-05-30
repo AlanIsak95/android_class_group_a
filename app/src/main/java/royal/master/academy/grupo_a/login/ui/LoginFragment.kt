@@ -92,8 +92,10 @@ class LoginFragment : Fragment() {
             //Tools.createToast(requireContext(), listCount)
 
 
-            val version = binding.tilFragmentLoginUser.editText?.text.toString()
-            loginViewModel.appVersion.value = version
+            //val version = binding.tilFragmentLoginVersion.editText?.text.toString()
+            //loginViewModel.appVersion.value = version
+
+            findNavController().navigate(R.id.action_loginFragment_to_recyclerFragment)
 
         }
 
@@ -105,6 +107,14 @@ class LoginFragment : Fragment() {
         /* */
         binding.btnFragmentLoginLogin.setOnClickListener {
             onLogin()
+        }
+
+        /* */
+        binding.tilFragmentLoginVersion.editText?.doOnTextChanged { text, _, _, _ ->
+
+            val valorDelEditText = text.toString().trim()
+            loginViewModel.appVersion.value = valorDelEditText
+
         }
 
         /* */

@@ -27,6 +27,37 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="1.0.0" />
 
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_fragment_login_version"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="14dp"
+            android:hint="@string/activity_login_til_login_version_text"
+            android:textColorHint="#673AB7"
+            app:boxStrokeColor="@color/til_color_default_selector"
+            app:counterEnabled="true"
+            app:counterMaxLength="3"
+            app:helperText="@string/activity_login_til_user_version_helper_text"
+            app:layout_constraintEnd_toStartOf="@+id/tv_fragment_login_version"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:maxLength="3"
+                android:textColor="#3F51B5"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_fragment_login_user"
             android:layout_width="match_parent"
@@ -111,7 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
             android:padding="15dp"
-            android:text="VER LISTA"
+            android:text="HACER ALGO"
             android:textColor="#2196F3"
             android:textSize="16dp"
             android:textStyle="bold"
