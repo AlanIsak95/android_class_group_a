@@ -92,14 +92,14 @@ class LoginFragment : Fragment() {
             //showToast(loginViewModel.name)
 
 
-            val listCount = Data.getUserList().count().toString()
-            Tools.createToast(requireContext(), listCount)
+            //val listCount = Data.getUserList().count().toString()
+            //Tools.createToast(requireContext(), listCount)
 
 
             //val version = binding.tilFragmentLoginVersion.editText?.text.toString()
             //loginViewModel.appVersion.value = version
 
-            //findNavController().navigate(R.id.action_loginFragment_to_recyclerFragment)
+            findNavController().navigate(R.id.action_loginFragment_to_recyclerFragment)
 
         }
 
