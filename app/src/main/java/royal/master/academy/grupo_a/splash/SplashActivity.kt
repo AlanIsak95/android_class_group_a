@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import royal.master.academy.grupo_a.data.Data
 import royal.master.academy.grupo_a.databinding.ActivitySplashBinding
 import royal.master.academy.grupo_a.login.LoginNCActivity
 import royal.master.academy.grupo_a.login.WelcomeActivity
@@ -27,6 +28,7 @@ class SplashActivity : AppCompatActivity() {
 
         redirection()
         setUpListeners()
+        Data.clearLoginUserList()
 
     }
    /** */

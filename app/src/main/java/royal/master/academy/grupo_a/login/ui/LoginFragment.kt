@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import royal.master.academy.grupo_a.R
 import royal.master.academy.grupo_a.data.Data
@@ -23,17 +22,24 @@ class LoginFragment : Fragment() {
 
     private val loginViewModel : LoginViewModel by activityViewModels()
 
-    private var _binding: FragmentLoginBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentLoginBinding
+
+    private var viewHasBeenCreated = false
 
     /** */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        return binding.root
+    ): View {
+        return if (viewHasBeenCreated){
+            binding.root
+        }else{
+            viewHasBeenCreated = true
+            binding = FragmentLoginBinding.inflate(inflater, container, false)
+            binding.root
+        }
+
     }
 
     /** */
@@ -62,8 +68,6 @@ class LoginFragment : Fragment() {
     /** */
     private fun setUpView() {
 
-        Data.clearLoginUserList()
-
         with(binding){
             btnFragmentLoginLogin.isEnabled = false
 
@@ -88,14 +92,14 @@ class LoginFragment : Fragment() {
             //showToast(loginViewModel.name)
 
 
-            //val listCount = Data.getUserList().count().toString()
-            //Tools.createToast(requireContext(), listCount)
+            val listCount = Data.getUserList().count().toString()
+            Tools.createToast(requireContext(), listCount)
 
 
             //val version = binding.tilFragmentLoginVersion.editText?.text.toString()
             //loginViewModel.appVersion.value = version
 
-            findNavController().navigate(R.id.action_loginFragment_to_recyclerFragment)
+            //findNavController().navigate(R.id.action_loginFragment_to_recyclerFragment)
 
         }
 
@@ -226,17 +230,6 @@ class LoginFragment : Fragment() {
 
         }
 
-
     }
-
-
-
-
-    /** */
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
 
 }

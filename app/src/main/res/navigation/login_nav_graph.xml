@@ -22,19 +22,14 @@
         android:id="@+id/registerFragment"
         android:name="royal.master.academy.grupo_a.login.ui.RegisterFragment"
         android:label="RegisterFragment"
-        tools:layout="@layout/fragment_register"/>
+        tools:layout="@layout/fragment_register">
+    </fragment>
     <fragment
         android:id="@+id/recyclerFragment"
         android:name="royal.master.academy.grupo_a.recycler.ui.RecyclerFragment"
         android:label="fragment_recycler"
         tools:layout="@layout/fragment_recycler" >
 
-        <action
-            android:id="@+id/action_recyclerFragment_to_registerFragment"
-            app:destination="@id/registerFragment"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="false"
-            />
 
     </fragment>
 
