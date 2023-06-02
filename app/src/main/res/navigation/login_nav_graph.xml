@@ -29,8 +29,15 @@
         android:name="royal.master.academy.grupo_a.recycler.ui.RecyclerFragment"
         android:label="fragment_recycler"
         tools:layout="@layout/fragment_recycler" >
-
-
+        <action
+            android:id="@+id/action_recyclerFragment_to_detailBottomSheet"
+            app:destination="@id/detailBottomSheet" />
     </fragment>
+
+    <dialog
+        android:id="@+id/detailBottomSheet"
+        android:name="royal.master.academy.grupo_a.recycler.ui.bottom_sheet.DetailBottomSheet"
+        android:label="fragment_detail_bottom_sheet"
+        tools:layout="@layout/fragment_detail_bottom_sheet" />
 
 </navigation>

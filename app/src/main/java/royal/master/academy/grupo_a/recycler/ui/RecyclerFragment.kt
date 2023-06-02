@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import royal.master.academy.grupo_a.databinding.FragmentRecyclerBinding
 import royal.master.academy.grupo_a.recycler.adapter.MyAdapter
 import royal.master.academy.grupo_a.recycler.data.Address
+import royal.master.academy.grupo_a.recycler.data.ItemSelectedValue
 import royal.master.academy.grupo_a.recycler.data.UserItem
 
 
@@ -70,32 +71,44 @@ class RecyclerFragment : Fragment() {
         val user1 = UserItem(
             name = "Alan",
             age = 50,
-            address = address1
+            address = address1,
+            imageURLValue = "https://static.fundacion-affinity.org/cdn/farfuture/PVbbIC-0M9y4fPbbCsdvAD8bcjjtbFc0NSP3lRwlWcE/mtime:1643275542/sites/default/files/los-10-sonidos-principales-del-perro.jpg"
         )
 
         val user2 = UserItem(
             name = "Juan",
             age = 15,
-            address = addressDefault
+            address = addressDefault,
+            imageURLValue = "https://www.purina-latam.com/sites/default/files/styles/social_share_large/public/purina-10-datos-curiosos-sobre-los-gatos.png?itok=SRb_m7Tx"
         )
 
         val user3 = UserItem(
             name = "Alma",
             age = 28,
-            address = address2
+            address = address2,
+            imageURLValue ="https://img.freepik.com/foto-gratis/primer-plano-pato-cerca-estanque-zoologico_181624-51048.jpg?w=2000"
         )
 
         val user4 = UserItem(
             name = "Angel",
             age = 46,
-            address = address1
+            address = address1,
+            imageURLValue = "https://www.nationalgeographic.com.es/medio/2022/12/12/leon-1_b21b27e1_221212155936_1280x720.jpg"
         )
 
-        val user5 = UserItem()
+        val user5 = UserItem(
+            imageURLValue = "https://t2.ea.ltmcdn.com/es/posts/4/9/9/curiosidades_del_tigre_25994_orig.jpg"
+        )
+
         user5.toString()
 
         return listOf(user1,user2,user3,user4,user5)
 
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        ItemSelectedValue.clearUser()
     }
 
 

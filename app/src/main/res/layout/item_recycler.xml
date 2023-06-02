@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:elevation="8dp"
+    android:elevation="16dp"
     app:cardCornerRadius="8dp"
     tools:context=".recycler.ui.RecyclerFragment">
 
@@ -16,8 +16,9 @@
 
         <ImageView
             android:id="@+id/iv_item_recycler_image"
-            android:layout_width="170dp"
+            android:layout_width="140dp"
             android:layout_height="170dp"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars"
@@ -72,16 +73,29 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_item_recycler_image"
             app:layout_constraintTop_toBottomOf="@+id/tv_item_recycler_address_title"
-            tools:text="Direccion de usuario greg segr wegre wgwer we gwer werg rew" />
+            tools:text="Direccion de usuario" />
 
         <Button
             android:id="@+id/btn_item_recycler_detail"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:text="Detalle"
+            android:text="Ir"
+            android:backgroundTint="#00F"
+            android:layout_marginEnd="24dp"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btn_item_recycler_bottom_sheet"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="Ver"
+            android:backgroundTint="#4CAF50"
+            android:layout_marginStart="24dp"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_item_recycler_image" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="#D1C4C4"
+    tools:context=".recycler.ui.bottom_sheet.DetailBottomSheet">
+
+    <TextView
+        android:id="@+id/tv_fragment_detail_bottom_sheet_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x"
+        android:textColor="@color/black"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_fragment_detail_bottom_sheet_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BottomSheet"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_marginTop="46dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
