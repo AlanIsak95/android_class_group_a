@@ -7,14 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import royal.master.academy.grupo_a.R
-import royal.master.academy.grupo_a.data.Data
 import royal.master.academy.grupo_a.data.UserLogged
+import royal.master.academy.grupo_a.data.room.entities.UserEntity
 import royal.master.academy.grupo_a.databinding.FragmentLoginBinding
 import royal.master.academy.grupo_a.login.LoginViewModel
 import royal.master.academy.grupo_a.login.status.LoginEnum
 import royal.master.academy.grupo_a.utils.Tools
+import royal.master.academy.grupo_a.utils.extension_fun.getAllUsers
+import royal.master.academy.grupo_a.utils.extension_fun.insertUser
 import royal.master.academy.grupo_a.utils.extension_fun.setBooleanSharedPreferences
 import royal.master.academy.grupo_a.utils.extension_fun.showToast
 
@@ -99,7 +104,41 @@ class LoginFragment : Fragment() {
             //val version = binding.tilFragmentLoginVersion.editText?.text.toString()
             //loginViewModel.appVersion.value = version
 
-            findNavController().navigate(R.id.action_loginFragment_to_recyclerFragment)
+            //findNavController().navigate(R.id.action_loginFragment_to_recyclerFragment)
+
+            val userJuan = UserEntity(
+                name = "Juan",
+                email = "juan@hotmail.com",
+                phoneNumber = "7756478675",
+                password = "12345",
+                userLogin = "juan12"
+            )
+
+            val userMario= UserEntity(
+                name = "Mario",
+                email = "mario@hotmail.com",
+                phoneNumber = "2987389218",
+                password = "54321",
+                userLogin = "mario19"
+            )
+
+            /* coroutine */
+            lifecycleScope.launch {
+
+
+
+
+                showToast("Agregando Usuario")
+                insertUser(userMario)
+                delay(2000)
+                showToast("Usuario Agregado")
+
+                val userList = getAllUsers()
+                showToast("el tamanio de la lista es: ${userList.size}")
+                delay(2000)
+
+            }
+
 
         }
 
