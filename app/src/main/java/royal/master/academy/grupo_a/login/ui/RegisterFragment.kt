@@ -1,19 +1,17 @@
 package royal.master.academy.grupo_a.login.ui
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.textfield.TextInputLayout
-import royal.master.academy.grupo_a.data.Data
+import royal.master.academy.grupo_a.data.room.entities.UserEntity
 import royal.master.academy.grupo_a.databinding.FragmentRegisterBinding
 import royal.master.academy.grupo_a.login.LoginViewModel
-import royal.master.academy.grupo_a.utils.Tools
-
+import royal.master.academy.grupo_a.login.status.InsertUserDBStatus
+import royal.master.academy.grupo_a.utils.extension_fun.showToast
 
 class RegisterFragment : Fragment() {
 
@@ -64,36 +62,51 @@ class RegisterFragment : Fragment() {
 
         binding.btnFragmentRegisterRegister.setOnClickListener {
 
-            binding.clFragmentRegisterContainer.visibility = View.VISIBLE
-            binding.btnFragmentRegisterRegister.isEnabled = false
+            with(binding){
 
-            val name     = binding.tilFragmentRegisterName.getText()
-            val email    = binding.tilFragmentRegisterEmail.getText()
-            val phone    = binding.tilFragmentRegisterPhoneNumber.getText()
-            val password = getText2(binding.tilFragmentRegisterPassword)
+                btnFragmentRegisterRegister.isEnabled = false
 
-            val userToSaveInCache = Tools.createUser(
+                registerViewModel.insertUserVM(
+                    context = requireContext(),
+                    userEntity = getUserByTILs()
+                ){
+
+                    when(it){
+                        InsertUserDBStatus.Load -> clFragmentRegisterContainer.visibility = View.VISIBLE
+                        InsertUserDBStatus.HideLoader -> clFragmentRegisterContainer.visibility = View.GONE
+                        is InsertUserDBStatus.Failure -> {
+                            btnFragmentRegisterRegister.isEnabled = true
+                            showToast(it.errorMessage)
+                        }
+                        is InsertUserDBStatus.Success -> {
+                            showToast(it.successMessage)
+                            activity?.onBackPressedDispatcher?.onBackPressed()
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    private fun getUserByTILs(): UserEntity {
+
+        with(binding){
+            val name = tilFragmentRegisterName.getText()
+            val email = tilFragmentRegisterEmail.getText()
+            val phone = tilFragmentRegisterPhoneNumber.getText()
+            val password = tilFragmentRegisterPassword.getText()
+
+            return UserEntity(
+                userID = phone,
                 name = name,
                 email = email,
                 phoneNumber = phone,
                 password = password
             )
-
-            Handler(Looper.getMainLooper()).postDelayed({
-
-                val userName = userToSaveInCache.userName
-                Tools.createToast(requireContext(), "Registro Exitoso, tu usuario es : $userName")
-
-            },1_000)
-
-
-            Handler(Looper.getMainLooper()).postDelayed({
-
-                Data.addUser(userToSaveInCache)
-                activity?.onBackPressedDispatcher?.onBackPressed()
-
-            },2_000)
-
 
         }
 

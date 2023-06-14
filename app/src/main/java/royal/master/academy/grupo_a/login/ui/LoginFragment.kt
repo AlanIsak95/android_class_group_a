@@ -106,39 +106,6 @@ class LoginFragment : Fragment() {
 
             //findNavController().navigate(R.id.action_loginFragment_to_recyclerFragment)
 
-            val userJuan = UserEntity(
-                name = "Juan",
-                email = "juan@hotmail.com",
-                phoneNumber = "7756478675",
-                password = "12345",
-                userLogin = "juan12"
-            )
-
-            val userMario= UserEntity(
-                name = "Mario",
-                email = "mario@hotmail.com",
-                phoneNumber = "2987389218",
-                password = "54321",
-                userLogin = "mario19"
-            )
-
-            /* coroutine */
-            lifecycleScope.launch {
-
-
-
-
-                showToast("Agregando Usuario")
-                insertUser(userMario)
-                delay(2000)
-                showToast("Usuario Agregado")
-
-                val userList = getAllUsers()
-                showToast("el tamanio de la lista es: ${userList.size}")
-                delay(2000)
-
-            }
-
 
         }
 

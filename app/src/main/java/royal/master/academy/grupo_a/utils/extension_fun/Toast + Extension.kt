@@ -7,10 +7,10 @@ import androidx.fragment.app.Fragment
 
 
 fun Activity.showToast( message : String) =
-    Toast.makeText(this,message, Toast.LENGTH_SHORT).show()
+    Toast.makeText(this,message, Toast.LENGTH_LONG).show()
 
 fun Fragment.showToast(message : String) =
-    Toast.makeText(requireActivity(),message, Toast.LENGTH_SHORT).show()
+    Toast.makeText(requireActivity(),message, Toast.LENGTH_LONG).show()
 
 fun Context.showToast(message : String) =
-    Toast.makeText(this,message, Toast.LENGTH_SHORT).show()
+    Toast.makeText(this,message, Toast.LENGTH_LONG).show()

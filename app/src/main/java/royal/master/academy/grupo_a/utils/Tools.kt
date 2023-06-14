@@ -12,6 +12,7 @@ object Tools {
         Toast.makeText(context,message, Toast.LENGTH_SHORT).show()
 
 
+    //Delete
     fun createUser(
         name : String,
         email : String,
