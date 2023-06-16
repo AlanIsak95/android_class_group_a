@@ -104,7 +104,7 @@ class LoginFragment : Fragment() {
             //val version = binding.tilFragmentLoginVersion.editText?.text.toString()
             //loginViewModel.appVersion.value = version
 
-            //findNavController().navigate(R.id.action_loginFragment_to_recyclerFragment)
+            findNavController().navigate(R.id.action_loginFragment_to_recyclerFragment)
 
 
         }

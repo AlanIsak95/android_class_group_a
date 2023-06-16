@@ -6,17 +6,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import royal.master.academy.grupo_a.data.retrofit.RetrofitConnection
+import royal.master.academy.grupo_a.data.retrofit.entity.get_character.GetCharacterResponse
+import royal.master.academy.grupo_a.data.retrofit.entity.get_character.Result
 import royal.master.academy.grupo_a.databinding.FragmentRecyclerBinding
 import royal.master.academy.grupo_a.recycler.adapter.MyAdapter
 import royal.master.academy.grupo_a.recycler.data.Address
 import royal.master.academy.grupo_a.recycler.data.ItemSelectedValue
 import royal.master.academy.grupo_a.recycler.data.UserItem
+import royal.master.academy.grupo_a.recycler.enums.SetData
+import royal.master.academy.grupo_a.utils.extension_fun.showToast
+import royal.master.academy.grupo_a.utils.extension_fun.toUserItemList
 
 
 class RecyclerFragment : Fragment() {
 
     private var _binding: FragmentRecyclerBinding? = null
     private val binding get() = _binding!!
+
+    /* Variable para seleccionar de donde llenar el Recycler*/
+    private val getDataSource = SetData.Retrofit
 
     /** */
     override fun onCreateView(
@@ -31,13 +43,47 @@ class RecyclerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /* */
-        setUpView()
+        when(getDataSource){
+            SetData.Retrofit -> getFromRetrofit()
+            SetData.Dummy -> getDummyData()
+        }
 
     }
 
-    /** */
-    private fun setUpView() {
+    private fun getFromRetrofit() {
+        RetrofitConnection().apiService.getCharacters().enqueue(object : Callback<GetCharacterResponse>{
+            override fun onResponse(
+                call: Call<GetCharacterResponse>,
+                response: Response<GetCharacterResponse>
+            ) {
+                val characterList = response.body()?.results?: emptyList()
+                showInRecycler(characterList)
+            }
+
+            override fun onFailure(call: Call<GetCharacterResponse>, t: Throwable) {
+                showToast("Error")
+            }
+
+        })
+    }
+
+    // Cargar datos remotos en lista
+    private fun showInRecycler(list : List<Result>) {
+
+        val myAdapter = MyAdapter(dataList =  list.toUserItemList())
+
+        with(binding){
+
+            rvFragmentRecycler.layoutManager = LinearLayoutManager(requireContext())
+            rvFragmentRecycler.adapter = myAdapter
+
+        }
+
+
+    }
+
+    /** Cargar datos locales, no de Room*/
+    private fun getDummyData() {
 
         val myAdapter = MyAdapter(dataList =  getUserItem())
 
